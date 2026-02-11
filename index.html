@@ -14,7 +14,7 @@
         .list1 { background:#101010; border:1px solid #323232; border-top:none; padding:8px; line-height:1.4; }
         .post-img { width:120px; height:90px; object-fit:cover; float:left; margin:0 10px 5px 0; border:1px solid #444; }
         
-        /* CSS NAVIGASI PARTNER */
+        /* CSS NAVIGASI */
         .pagenav { background:#111; padding:10px; text-align:center; border:1px solid #333; margin:5px 0; }
         .pagenav a, .pagenav span { display:inline-block; padding:5px 10px; margin:2px; border:1px solid #444; background:#222; color:#75bf00; cursor:pointer; font-weight:bold; text-decoration:none; }
         .pagenav .current { background:#b94201; color:#fff; border-color:#5c2901; }
@@ -73,7 +73,7 @@
     // 3. Fungsi Navigasi Angka
     function updateNav(current) {
         let navHtml = '';
-        const totalPages = 5; // Batasi sampai 5 halaman
+        const totalPages = 8; // Batasi sampai 5 halaman
         for (let i = 1; i <= totalPages; i++) {
             if (i === current) {
                 navHtml += `<span class="current">${i}</span>`;
