@@ -36,7 +36,7 @@ async function loadContent() {
 // Menampilkan daftar artikel di halaman depan
 async function renderPostList() {
     try {
-        const response = await fetch('data/posts.json');
+        const response = await fetch('data/post.json');
         if (!response.ok) throw new Error();
         const posts = await response.json();
 
@@ -45,7 +45,7 @@ async function renderPostList() {
             const cssClass = index % 2 === 0 ? 'list1' : 'list2';
             html += `
                 <div class="${cssClass}">
-                    <img src="http://putramsumatra.mw.lt/css/images/tmn.gif" style="vertical-align:middle;"> 
+                    <img src="http://putrasumatra.mw.lt/css/themas/images/tmn.gif" style="vertical-align:middle;"> 
                     <a href="javascript:void(0)" onclick="navigateToPost('${post.id}')"><b>${post.title}</b></a>
                     <div style="margin-top:4px; color:#aaa;">${post.excerpt}</div>
                     <div class="func">Tgl: ${post.date}</div>
