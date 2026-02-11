@@ -1,60 +1,114 @@
 const app = document.getElementById('app');
 
-function goHome() {
-    window.location.hash = '';
-    renderPostList();
+// 1. Setup Navigasi (Sama seperti sebelumnya)
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }
 
+function navigateToPost(id) {
+    const newUrl = `${window.location.pathname}?id=${id}`;
+    window.history.pushState({ id: id }, '', newUrl);
+    loadContent();
+}
+
+function goHome() {
+    const newUrl = window.location.pathname;
+    window.history.pushState({}, '', newUrl);
+    loadContent();
+}
+
+window.onpopstate = loadContent;
+
+// 2. Router Utama
+async function loadContent() {
+    const postId = getQueryParam('id');
+    
+    // Tampilan Loading gaya WAP
+    app.innerHTML = '<div class="list1" style="text-align:center;">Sedang memuat...</div>';
+
+    if (postId) {
+        await renderSinglePost(postId);
+    } else {
+        await renderPostList();
+    }
+}
+
+// 3. Render Daftar Artikel (Gaya WAP List)
 async function renderPostList() {
-    app.innerHTML = '<div class="list1" style="text-align:center;">Memuat daftar...</div>';
     try {
-        // Memanggil post.json (tanpa s)
-        const response = await fetch('data/post.json');
+        const response = await fetch('data/posts.json');
+        if (!response.ok) throw new Error('Network error');
         const posts = await response.json();
+
         let html = '';
-        posts.forEach(post => {
+        
+        // Judul Halaman
+        html += '<div class="phdr"><b>Artikel Terbaru</b></div>';
+
+        posts.forEach((post, index) => {
+            // Selang-seling warna (Ganjil: list1, Genap: list2)
+            const cssClass = index % 2 === 0 ? 'list1' : 'list2';
+            
             html += `
-                <div class="list1">
-                    <img src="${post.image}" style="vertical-align:middle; margin-right:5px; width:16px;">
-                    <a href="#post/${post.id}" onclick="renderSinglePost('${post.id}')"><b>${post.title}</b></a>
-                    <div style="font-size: 10px; color: #888; margin-top: 2px;">${post.date}</div>
+                <div class="${cssClass}">
+                    <img src="http://putramsumatra.mw.lt/css/images/tmn.gif" style="vertical-align:middle;"> 
+                    <a href="javascript:void(0)" onclick="navigateToPost('${post.id}')"><b>${post.title}</b></a>
+                    
+                    <div style="margin-top:2px;">${post.excerpt}</div>
+                    
+                    <div class="func">
+                        Diposting pada: ${post.date}
+                    </div>
                 </div>
             `;
         });
-        app.innerHTML = html;
-    } catch (error) {
-        app.innerHTML = '<div class="list1" style="color:red;">Gagal memuat artikel. Pastikan folder data/post.json sudah ada.</div>';
-    }
-}
 
-async function renderSinglePost(id) {
-    app.innerHTML = '<div class="list1" style="text-align:center;">Memuat isi...</div>';
-    try {
-        const response = await fetch(`data/${id}.json`);
-        const post = await response.json();
-        // Mengubah teks markdown menjadi HTML
-        const contentHtml = marked.parse(post.content);
-        
-        app.innerHTML = `
-            <div class="phdr">${post.title}</div>
-            <div class="list1">
-                <small>Oleh: ${post.author} | ${post.date}</small>
-                <div style="margin-top:10px; line-height:1.5;">${contentHtml}</div>
-                <div class="func">
-                    <a href="javascript:void(0)" onclick="goHome()">« Kembali</a>
-                </div>
+        // Tombol Navigasi Bawah
+        html += `
+            <div class="gmenu" style="text-align:center;">
+                <a href="#">Next &raquo;</a>
             </div>
         `;
+
+        app.innerHTML = html;
     } catch (error) {
-        app.innerHTML = '<div class="list1" style="color:red;">Artikel tidak ditemukan.</div>';
+        app.innerHTML = '<div class="rmenu">Gagal memuat data posts.json</div>';
     }
 }
 
-window.addEventListener('load', () => {
-    const hash = window.location.hash;
-    if (hash.startsWith('#post/')) {
-        renderSinglePost(hash.replace('#post/', ''));
-    } else {
-        renderPostList();
+// 4. Render Artikel Lengkap
+async function renderSinglePost(id) {
+    try {
+        const response = await fetch(`data/${id}.json`);
+        if (!response.ok) {
+            app.innerHTML = '<div class="rmenu">Artikel tidak ditemukan!</div><div class="bmenu"><a href="#" onclick="goHome()">Kembali</a></div>';
+            return;
+        }
+
+        const post = await response.json();
+        const contentHtml = marked.parse(post.content);
+
+        let html = `
+            <div class="phdr"><b>${post.title}</b></div>
+            
+            <div class="gmenu">
+                Oleh: <b>${post.author}</b> | ${post.date}
+            </div>
+
+            <div class="list1 markdown-body" style="padding: 8px;">
+                ${contentHtml}
+            </div>
+            
+            <div class="bmenu">
+                &laquo; <a href="#" onclick="goHome()">Kembali ke Depan</a>
+            </div>
+        `;
+
+        app.innerHTML = html;
+    } catch (error) {
+        app.innerHTML = '<div class="rmenu">Error memuat artikel.</div>';
     }
-});
+}
+
+document.addEventListener('DOMContentLoaded', loadContent);
