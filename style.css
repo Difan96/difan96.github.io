@@ -1,0 +1,84 @@
+/* CSS Retro by Difan96 */
+
+a:link, a:visited { color : #fe8f17; text-decoration : none; }
+a:hover { color : #ff4e00; text-decoration : none; }
+
+input, textarea, select { color : #6d6d6d; background-color : #101010; border : 1px solid #363636; }
+input:hover, textarea:hover, select:hover { color : #8f8f8f; background-color : #212121; border : 1px solid #434343; }
+input:focus, textarea:focus, select:focus { color : #78b100; background-color : #1c2900; border : 1px solid #385400; }
+
+body { 
+    color: #CCCCCC; 
+    font-size : 11px; 
+    background-color : #000; 
+    font-family : Tahoma; 
+    margin : auto; 
+    max-width: 800px; 
+    padding : 0; 
+}
+
+.logo {
+    margin: 1px; padding: 4px; color : #b94201; text-align : center;
+    background-color : #020100;
+    background-image : url('http://putramsumatra.mw.lt/css/images/tmn.gif');
+    background-repeat : repeat-x; background-position : 50% bottom;
+    border : 1px solid #5c2901;
+}
+
+.header, .footer {
+    margin: 1px; padding: 5px;
+    background-image : url('http://putramsumatra.mw.lt/css/images/header.gif');
+    color : #a9a9a9; text-shadow : #000000 1px 1px 2px;
+    background-color : #0a0a0a; background-repeat : repeat-x; background-position : 50% top;
+    border : 1px solid #333333;
+    text-align: center;
+}
+
+.phdr {
+    color : #0084b5;
+    text-shadow : #000000 1px 1px 2px;
+    background-color : #000406;
+    background-image : url('http://putramsumatra.mw.lt/css/images/bmenu.gif');
+    background-repeat : repeat-x;
+    background-position : 50% top;
+    margin-top : 1px; margin-bottom : 1px; padding : 4px;
+    border : 1px solid #005064;
+    font-weight: bold;
+}
+
+.gmenu {
+    color : #75bf00;
+    background-color : #030500;
+    background-image : url('http://putramsumatra.mw.lt/css/images/gmenu.gif');
+    background-repeat : repeat-x;
+    background-position : 50% top;
+    margin-top : 1px; margin-bottom : 1px; padding : 4px;
+    border : 1px solid #415f00;
+}
+
+.list1 { background-color : #101010; margin-top : 1px; margin-bottom : 1px; padding : 6px; border : 1px solid #323232; }
+.list2 { background-color : #292929; margin-top : 1px; margin-bottom : 1px; padding : 6px; border : 1px solid #3f3f3f; }
+.maintxt { padding : 2px; border : 1px solid #3b3b3b; }
+
+.func {
+    border-left : 4px solid #659300;
+    color : #757575;
+    font-size : 10px;
+    margin-top : 4px;
+    padding-left : 4px;
+    border-top : 1px dotted #4f4f4f;
+}
+
+#menu { width: 100%; height: 28px; margin: 0 auto; overflow: hidden; }
+#menu ul { margin: 0; padding: 0; list-style: none; }
+#menu li { display: inline; }
+#menu a {
+    width: 24.5%;
+    height: 22px;
+    background: url('http://putramsumatra.mw.lt/css/images/header.gif') repeat-x;
+    display: block; float: left; margin-right: 1px;
+    text-align: center; padding: 6px 0 0 0;
+    text-decoration: none; color: #FFFFFF;
+}
+
+.markdown-body img { max-width: 100%; height: auto; border: 1px solid #333; margin: 5px 0; }
