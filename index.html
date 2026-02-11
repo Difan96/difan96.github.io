@@ -1,109 +1,148 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Difan DCMS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XWAPPER</title>
     <style>
-        /* CSS DASAR DIFAN */
-        body { background:#000; color:#ccc; font-family:Tahoma; font-size:11px; margin:0; padding:0; display:flex; justify-content:center; }
-        .xwapper { width:100%; max-width:650px; background:#000; min-height:100vh; border-left:1px solid #333; border-right:1px solid #333; box-sizing: border-box; }
-        a { color:#fe8f17; text-decoration:none; }
+        /* --- CSS DASAR --- */
+        body { background: #000; color: #ccc; font-family: Tahoma; font-size: 11px; margin: 0; padding: 0; display: flex; justify-content: center; }
+        .xwapper { width: 100%; max-width: 650px; background: #000; min-height: 100vh; border-left: 1px solid #333; border-right: 1px solid #333; overflow-x: hidden; }
+        a { color: #fe8f17; text-decoration: none; }
         
-        .logo { background:#020100 url(https://putrasumatra.mw.lt/css/themas/images/tmn.gif) repeat-x 50% bottom; color:#b94201; text-align:center; padding:10px; border:1px solid #5c2901; font-weight:bold; }
-        .bmenu { background:#000406 url(https://putrasumatra.mw.lt/css/themas/images/bmenu.gif) repeat-x 50% top; color:#0084b5; padding:5px; border:1px solid #005064; text-align:center; }
+        .logo { background: #020100 url(https://putrasumatra.mw.lt/css/themas/images/tmn.gif) repeat-x 50% bottom; color: #b94201; text-align: center; padding: 10px; border: 1px solid #5c2901; }
+        .bmenu { background: #000406 url(https://putrasumatra.mw.lt/css/themas/images/bmenu.gif) repeat-x 50% top; color: #0084b5; padding: 4px; border: 1px solid #005064; text-shadow: #000 1px 1px 2px; text-align: center; margin-bottom: 2px; }
         
-        /* POSTINGAN */
-        .menu { background:#040404 url(https://putrasumatra.mw.lt/css/themas/images/menu.gif) repeat-x 50% bottom; border:1px solid #353535; padding:5px; margin:5px 0; overflow:hidden; }
-        .tmn { background:#020100 url(https://putrasumatra.mw.lt/css/themas/images/tmn_1.gif) repeat-x 50% bottom; color:#b94201; padding:5px; border:1px solid #5c2901; font-weight:bold; }
-        .list1 { background:#101010; border:1px solid #323232; border-top:none; padding:8px; line-height:1.4; }
+        /* --- PERBAIKAN STRUKTUR POSTINGAN --- */
+        .menu { background: #040404 url(https://putrasumatra.mw.lt/css/themas/images/menu.gif) repeat-x 50% bottom; border: 1px solid #353535; padding: 5px; margin: 4px 0; overflow: hidden; }
+        .tmn { background: #020100 url(https://putrasumatra.mw.lt/css/themas/images/tmn_1.gif) repeat-x 50% bottom; color: #b94201; padding: 4px; border: 1px solid #5c2901; font-weight: bold; }
+        .list1 { background: #101010; border: 1px solid #323232; padding: 5px; margin: 2px 0; line-height: 1.4; border-top: none; word-wrap: break-word; }
         
-        /* GAMBAR KONTROL */
-        .post-img { width:100px; height:80px; object-fit:cover; float:left; margin:0 10px 5px 0; border:1px solid #444; background:#222; }
+        /* --- KONTROL GAMBAR AGAR TIDAK HANCUR (PENTING) --- */
+        .list1 img { 
+            max-width: 50% !important; 
+            height: 30% !important; 
+            display: block; 
+            margin: 5px auto; 
+            border: 1px solid #333; 
+            box-shadow: 0 0 5px #000;
+        }
 
-        /* NAVIGASI ANGKA */
-        .pagenav { background:#111; padding:10px; text-align:center; border:1px solid #333; margin:10px 0; }
-        .pagenav a, .pagenav span { display:inline-block; padding:5px 10px; margin:2px; border:1px solid #444; background:#222; color:#75bf00; cursor:pointer; font-weight:bold; }
-        .pagenav .current { background:#b94201; color:#fff; border-color:#5c2901; }
+        .gmenu { display: block; background: #030500 url(https://putrasumatra.mw.lt/css/themas/images/gmenu.gif) repeat-x 50% top; color: #75bf00; padding: 5px; border: 1px solid #415f00; text-align: center; margin-top: 5px; font-weight: bold; }
         
-        .gmenu { display:block; background:#030500 url(https://putrasumatra.mw.lt/css/themas/images/gmenu.gif) repeat-x 50% top; color:#75bf00; padding:5px; border:1px solid #415f00; text-align:center; margin-top:5px; clear:both; }
-        .footer { background:#0a0a0a url(https://putrasumatra.mw.lt/css/themas/images/header.gif) repeat-x 50% top; border:1px solid #333; padding:10px; text-align:center; }
+        .footer { background: #0a0a0a url(https://putrasumatra.mw.lt/css/themas/images/header.gif) repeat-x 50% top; border: 1px solid #333; padding: 10px; text-align: center; margin-top: 5px; }
+.pagenav { background:#111; padding:10px; text-align:center; border:1px solid #333; margin:5px 0; }
+.pagenav a, .pagenav span { 
+    display:inline-block; 
+    padding:5px 10px; 
+    margin:0 2px; 
+    border:1px solid #444; 
+    background:#222; 
+    color:#75bf00; 
+    cursor:pointer; 
+    font-weight:bold; 
+    text-decoration:none; 
+}
+.pagenav .current { background:#b94201; color:#fff; border-color:#5c2901; }
+.pagenav a:hover { background:#333; }       
     </style>
 </head>
 <body>
 
 <div class="xwapper">
-    <div class="logo">DIFAN DCMS</div>
-    <div class="bmenu"><a href="/">HOME</a> | <a href="#">INDEX</a></div>
-    
-    <div id="content-holder"></div>
+    <div class="logo"><h3>XWAPER BLOG</h3></div>
+    <div class="bmenu"><a href="/">HOME</a> | <a href="https://pasisi.blogspot.com">Pasisi</a></div>
 
-    <div class="pagenav" id="nav-holder"></div>
+    <div id="post-container">
+        <div class="list1" style="text-align:center;">Menghubungkan ke Feed...</div>
+    </div>
 
-    <div class="footer">&copy; 2026 Difan - DCMS</div>
+    <div class="pagenav" id="navigation"></div>
+
+    <div class="footer">
+        &copy; 2026 Difan96
+    </div>
 </div>
 
 <script>
+    // MASUKKAN URL BLOG DI SINI
     const blog_url = "https://xwapper.blogspot.com"; 
-    const perPage = 5;
 
-    function ambilData(n) {
-        document.getElementById('content-holder').innerHTML = '<div class="list1">Memuat Postingan...</div>';
-        const script = document.createElement('script');
-        script.src = `${blog_url}/feeds/posts/default?alt=json-in-script&start-index=${n}&max-results=${perPage}&callback=tampilkan`;
-        document.body.appendChild(script);
-        // Hapus script setelah dipanggil agar tidak menumpuk
-        script.onload = () => document.body.removeChild(script);
-    }
-
-    function tampilkan(json) {
+    function callbackPosts(json) {
         let html = '';
         const entries = json.feed.entry;
-        if(entries) {
-            entries.forEach(e => {
-                const judul = e.title.$t;
-                const link = e.link.find(l => l.rel === 'alternate').href;
-                let thumb = e.media$thumbnail ? e.media$thumbnail.url.replace('s72-c', 's200') : 'https://via.placeholder.com/100x80?text=No+Image';
-                let ringkasan = (e.summary ? e.summary.$t : (e.content ? e.content.$t : "")).replace(/<[^>]*>?/gm, '').substring(0, 100);
+        
+        if (entries) {
+            for (let i = 0; i < entries.length; i++) {
+                const title = entries[i].title.$t;
+                let link = '';
+                for (let j = 0; j < entries[i].link.length; j++) {
+                    if (entries[i].link[j].rel == 'alternate') { link = entries[i].link[j].href; break; }
+                }
+
+                // Mengambil gambar dari postingan
+                let thumbUrl = "";
+                if (entries[i].media$thumbnail) {
+                    thumbUrl = entries[i].media$thumbnail.url.replace('s72-c', 's1600');
+                } else if (entries[i].content && entries[i].content.$t.match(/src="([^"]+)"/)) {
+                    thumbUrl = entries[i].content.$t.match(/src="([^"]+)"/)[1];
+                }
+
+                let imgHtml = thumbUrl ? `<img src="${thumbUrl}" alt="image"/>` : "";
+                
+                // Mengambil ringkasan teks (membersihkan tag HTML)
+                let summary = entries[i].summary ? entries[i].summary.$t : (entries[i].content ? entries[i].content.$t : "");
+                summary = summary.replace(/<[^>]*>?/gm, '').substring(0, 120);
 
                 html += `
                 <div class="menu">
-                    <div class="tmn"><a href="${link}">${judul}</a></div>
+                    <div class="tmn"><a href="${link}">${title}</a></div>
                     <div class="list1">
-                        <img src="${thumb}" class="post-img">
-                        ${ringkasan}...
+                        ${imgHtml}
+                        ${summary}...
                     </div>
                     <a href="${link}" class="gmenu">Baca Selengkapnya »</a>
                 </div>`;
-            });
-            document.getElementById('content-holder').innerHTML = html;
-        }
-    }
-
-    function bikinNav(aktif) {
-        let navHtml = '';
-        const maxHalaman = 5; // Tampilkan sampai halaman 5
-        for (let i = 1; i <= maxHalaman; i++) {
-            if (i === aktif) {
-                navHtml += `<span class="current">${i}</span>`;
-            } else {
-                navHtml += `<a onclick="pindah(${i})">${i}</a>`;
             }
+            document.getElementById('post-container').innerHTML = html;
+        } else {
+            document.getElementById('post-container').innerHTML = '<div class="list1">Tidak ada postingan.</div>';
         }
-        document.getElementById('nav-holder').innerHTML = navHtml;
     }
 
-    function pindah(hal) {
-        const start = ((hal - 1) * perPage) + 1;
-        ambilData(start);
-        bikinNav(hal);
-        window.scrollTo(0,0);
-    }
-
-    // Jalankan awal
-    ambilData(1);
-    bikinNav(1);
+    const script = document.createElement('script');
+    script.src = `${blog_url}/feeds/posts/default?alt=json-in-script&callback=callbackPosts`;
+    document.body.appendChild(script);
 </script>
+
+    const postPerPage = 5; // Jumlah postingan per halaman
+
+function updateNav(current) {
+    let navHtml = '';
+    const totalPages = 5; // Partner bisa ganti jumlah halaman maksimal di sini
+    
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === current) {
+            navHtml += `<span class="current">${i}</span>`;
+        } else {
+            navHtml += `<a href="javascript:void(0)" onclick="goToPage(${i})">${i}</a>`;
+        }
+    }
+    document.getElementById('navigation').innerHTML = navHtml;
+}
+
+function goToPage(n) {
+    // Fungsi ini memanggil fungsi load/ambil data Anda yang sudah ada
+    // Sesuaikan nama fungsinya (misal: ambilData(n))
+    const startIndex = ((n - 1) * postPerPage) + 1;
+    ambilData(startIndex); // Ganti dengan nama fungsi fetch/load postingan Anda
+    updateNav(n);
+    window.scrollTo(0,0);
+}
+
+// Panggil pertama kali saat halaman dimuat
+updateNav(1);
 
 </body>
 </html>
