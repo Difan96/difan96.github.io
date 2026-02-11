@@ -20,14 +20,14 @@ body {
 .logo {
     margin: 1px; padding: 4px; color : #b94201; text-align : center;
     background-color : #020100;
-    background-image : url('http://putrasumatra.mw.lt/css/themas/images/tmn.gif');
+    background-image : url('https://putrasumatra.mw.lt/css/themas/images/tmn.gif');
     background-repeat : repeat-x; background-position : 50% bottom;
     border : 1px solid #5c2901;
 }
 
 .header, .footer {
     margin: 1px; padding: 5px;
-    background-image : url('http://putrasumatra.mw.lt/css/themas/images/header.gif');
+    background-image : url('https://putrasumatra.mw.lt/css/themas/images/header.gif');
     color : #a9a9a9; text-shadow : #000000 1px 1px 2px;
     background-color : #0a0a0a; background-repeat : repeat-x; background-position : 50% top;
     border : 1px solid #333333;
@@ -38,7 +38,7 @@ body {
     color : #0084b5;
     text-shadow : #000000 1px 1px 2px;
     background-color : #000406;
-    background-image : url('http://putrasumatra.mw.lt/css/themas/images/bmenu.gif');
+    background-image : url('https://putrasumatra.mw.lt/css/themas/images/bmenu.gif');
     background-repeat : repeat-x;
     background-position : 50% top;
     margin-top : 1px; margin-bottom : 1px; padding : 4px;
@@ -49,7 +49,7 @@ body {
 .gmenu {
     color : #75bf00;
     background-color : #030500;
-    background-image : url('http://putrasumatra.mw.lt/css/themas/images/gmenu.gif');
+    background-image : url('https://putrasumatra.mw.lt/css/themas/images/gmenu.gif');
     background-repeat : repeat-x;
     background-position : 50% top;
     margin-top : 1px; margin-bottom : 1px; padding : 4px;
@@ -75,7 +75,7 @@ body {
 #menu a {
     width: 24.5%;
     height: 22px;
-    background: url('http://putrasumatra.mw.lt/css/themas/images/header.gif') repeat-x;
+    background: url('https://putrasumatra.mw.lt/css/themas/images/header.gif') repeat-x;
     display: block; float: left; margin-right: 1px;
     text-align: center; padding: 6px 0 0 0;
     text-decoration: none; color: #FFFFFF;
