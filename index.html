@@ -115,5 +115,33 @@
     document.body.appendChild(script);
 </script>
 
+    const postPerPage = 5; // Jumlah postingan per halaman
+
+function updateNav(current) {
+    let navHtml = '';
+    const totalPages = 5; // Partner bisa ganti jumlah halaman maksimal di sini
+    
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === current) {
+            navHtml += `<span class="current">${i}</span>`;
+        } else {
+            navHtml += `<a href="javascript:void(0)" onclick="goToPage(${i})">${i}</a>`;
+        }
+    }
+    document.getElementById('navigation').innerHTML = navHtml;
+}
+
+function goToPage(n) {
+    // Fungsi ini memanggil fungsi load/ambil data Anda yang sudah ada
+    // Sesuaikan nama fungsinya (misal: ambilData(n))
+    const startIndex = ((n - 1) * postPerPage) + 1;
+    ambilData(startIndex); // Ganti dengan nama fungsi fetch/load postingan Anda
+    updateNav(n);
+    window.scrollTo(0,0);
+}
+
+// Panggil pertama kali saat halaman dimuat
+updateNav(1);
+
 </body>
 </html>
